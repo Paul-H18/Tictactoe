@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+//this.setIconImage(Toolkit.getDefaultToolkit().getImage("images\\mylogo.png"));
+
 public class Main {
 
     static int count = 0;
@@ -34,6 +36,7 @@ public class Main {
         frame.setResizable(false);
         frame.setLayout(null);
         frame.setBackground(Color.WHITE);
+        frame.setTitle("Tic Tac Toe Beta-0.2");
 
         for (int i = 0; i < buttonAmount; i++) {
             buttonList.add(new JButton());
