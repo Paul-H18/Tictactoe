@@ -33,6 +33,7 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setLayout(null);
+        frame.setBackground(Color.WHITE);
 
         for (int i = 0; i < buttonAmount; i++) {
             buttonList.add(new JButton());
