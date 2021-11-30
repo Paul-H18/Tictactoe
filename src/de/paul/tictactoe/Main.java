@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 public class Main {
 
+    public static final int size = 120;
+
     static int count = 0;
 
     static String[] team = new String[3];
@@ -18,7 +20,7 @@ public class Main {
 
     static ArrayList<JButton> buttonList = new ArrayList<>();
 
-    static Font mainFont = new Font("Arial", Font.PLAIN, 24);
+    static Font mainFont = new Font("Arial", Font.PLAIN, 80);
 
     static JLabel teams = new JLabel();
 
@@ -31,7 +33,7 @@ public class Main {
 
     public static void setUpWindow() {
         frame.setVisible(true);
-        frame.setBounds(0,0,400, 400);
+        frame.setBounds(0,0,570, 570);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setLayout(null);
@@ -44,7 +46,7 @@ public class Main {
             buttonList.get(i).setText("");
             buttonList.get(i).setBounds(10,10,60,60);
             buttonList.get(i).setFont(mainFont);
-            buttonList.get(i).setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
+            buttonList.get(i).setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
             buttonList.get(i).setBackground(Color.WHITE);
             buttonList.get(i).setForeground(Color.BLACK);
             int finalI = i;
@@ -69,26 +71,26 @@ public class Main {
 
         }
 
-        buttonList.get(0).setBounds(20, 20, 60, 60);
-        buttonList.get(1).setBounds(100, 20, 60, 60);
-        buttonList.get(2).setBounds(180, 20, 60, 60);
+        buttonList.get(0).setBounds(40, 40, size, size);
+        buttonList.get(1).setBounds(200, 40, size, size);
+        buttonList.get(2).setBounds(360, 40, size, size);
 
-        buttonList.get(3).setBounds(20, 100, 60, 60);
-        buttonList.get(4).setBounds(100, 100, 60, 60);
-        buttonList.get(5).setBounds(180, 100, 60, 60);
+        buttonList.get(3).setBounds(40, 200, size, size);
+        buttonList.get(4).setBounds(200, 200, size, size);
+        buttonList.get(5).setBounds(360, 200, size, size);
 
-        buttonList.get(6).setBounds(20, 180, 60, 60);
-        buttonList.get(7).setBounds(100, 180, 60, 60);
-        buttonList.get(8).setBounds(180, 180, 60, 60);
+        buttonList.get(6).setBounds(40, 360, size, size);
+        buttonList.get(7).setBounds(200, 360, size, size);
+        buttonList.get(8).setBounds(360, 360, size, size);
 
 
         team[1] = "Team A (X) ist an der Reihe";
         team[2] = "Team B (O) ist an der Reihe";
 
-        teams.setBounds(20, 300, 200, 60);
+        teams.setBounds(40, 470, 300, 80);
         teams.setVisible(true);
         teams.setText(team[getTeamNumber(count)]);
-
+        teams.setFont(new Font("Arial", Font.PLAIN, 18));
         frame.add(teams);
 
     }
