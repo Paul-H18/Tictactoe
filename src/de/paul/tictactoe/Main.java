@@ -10,15 +10,17 @@ public class Main {
 
     static int count = 0;
 
-    static String[] team = new String[2];
+    static String[] team = new String[3];
 
     static JFrame frame = new JFrame();
 
     static ArrayList<JButton> buttonList = new ArrayList<>();
 
-    static Font mainFont = new Font("Times New Roman", Font.PLAIN, 14);
+    static Font mainFont = new Font("Arial", Font.PLAIN, 24);
 
     static JLabel teams = new JLabel();
+
+    public static final int buttonAmount = 9;
 
     public static void main(String[] args) {
         setUpWindow();
@@ -32,12 +34,15 @@ public class Main {
         frame.setResizable(false);
         frame.setLayout(null);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < buttonAmount; i++) {
             buttonList.add(new JButton());
             buttonList.get(i).setVisible(true);
             buttonList.get(i).setText("");
-            buttonList.get(i).setBounds(10,10,30,30);
+            buttonList.get(i).setBounds(10,10,60,60);
             buttonList.get(i).setFont(mainFont);
+            buttonList.get(i).setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
+            buttonList.get(i).setBackground(Color.WHITE);
+            buttonList.get(i).setForeground(Color.BLACK);
             int finalI = i;
             buttonList.get(i).addActionListener(new ActionListener() {
                 @Override
@@ -45,7 +50,14 @@ public class Main {
                     if(buttonList.get(finalI).getText() == "X" || buttonList.get(finalI).getText() == "O") {
 
                     } else {
-                        this.
+                        if(isEven(count)) {
+                            buttonList.get(finalI).setText("X");
+                        } else if(!isEven(count)) {
+                            buttonList.get(finalI).setText("O");
+                        }
+
+                        count++;
+                        teams.setText(team[getTeamNumber(count)]);
                     }
                 }
             });
@@ -53,25 +65,25 @@ public class Main {
 
         }
 
-        buttonList.get(0).setBounds(10, 10, 30, 30);
-        buttonList.get(1).setBounds(50, 10, 30, 30);
-        buttonList.get(2).setBounds(90, 10, 30, 30);
+        buttonList.get(0).setBounds(20, 20, 60, 60);
+        buttonList.get(1).setBounds(100, 20, 60, 60);
+        buttonList.get(2).setBounds(180, 20, 60, 60);
 
-        buttonList.get(3).setBounds(10, 50, 30, 30);
-        buttonList.get(4).setBounds(50, 50, 30, 30);
-        buttonList.get(5).setBounds(90, 50, 30, 30);
+        buttonList.get(3).setBounds(20, 100, 60, 60);
+        buttonList.get(4).setBounds(100, 100, 60, 60);
+        buttonList.get(5).setBounds(180, 100, 60, 60);
 
-        buttonList.get(6).setBounds(10, 90, 30, 30);
-        buttonList.get(7).setBounds(50, 90, 30, 30);
-        buttonList.get(8).setBounds(90, 90, 30, 30);
+        buttonList.get(6).setBounds(20, 180, 60, 60);
+        buttonList.get(7).setBounds(100, 180, 60, 60);
+        buttonList.get(8).setBounds(180, 180, 60, 60);
 
 
-        team[0] = "Team A ist an der Reihe";
-        team[1] = "Team B ist an der Reihe";
+        team[1] = "Team A (X) ist an der Reihe";
+        team[2] = "Team B (O) ist an der Reihe";
 
-        teams.setBounds(10, 120, 150, 60);
+        teams.setBounds(20, 300, 200, 60);
         teams.setVisible(true);
-        teams.setText(team[0]);
+        teams.setText(team[getTeamNumber(count)]);
 
         frame.add(teams);
 
@@ -84,6 +96,14 @@ public class Main {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public static int getTeamNumber(int number) {
+        if(isEven(number + 1)) {
+            return 2;
+        } else {
+            return 1;
         }
     }
 
